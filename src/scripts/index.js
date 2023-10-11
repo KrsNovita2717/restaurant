@@ -1,4 +1,10 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../styles/main.css';
+import '../styles/responsive.css';
+import App from './views/app';
 
-console.log('Hello Coders! :)');
+const app = new App({
+  button: document.querySelector('#menu-button'),
+  drawer: document.querySelector('#navigationDrawer'),
+  content: document.querySelector('#mainContent'),
+});

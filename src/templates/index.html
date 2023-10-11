@@ -1,19 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Restaurant Apps</title>
-  </head>
-  <body>
-    <h1>Restaurant Apps Starter Project</h1>
-    <p>Hallo coders! Anda berhasil menjalankan starter project.</p>
-    <p>
-      Jangan lupa untuk menggunakan salah satu gambar yang berada pada ./images/heros
-      sebagai background hero elemen.
-    </p>
-    <img src="./images/heros/hero-image_1.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_2.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_3.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_4.jpg" width="450" alt="" />
-  </body>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Flavorista</title>
+  <meta name="description" content="Katalog restaurant di sekitar anda">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="icon" href="./favicon.png">
+</head>
+
+<body>
+  <a href="#mainContent" class="skip-link"></a>
+  <header>
+    <div class="app-bar">
+      <div class="app-bar__menu">
+        <button id="menu-button" title="off canvas button" aria-label="off canvas button">
+          <i class="fa-solid fa-bars" id="open-menu"></i>
+          <i class="fa-regular fa-circle-xmark" id="close-menu"></i>
+        </button>
+      </div>
+      <div class="app-bar__brand">
+        <h1>
+          <a href="./" title="Web Brand">Flavorista</a>
+        </h1>
+      </div>
+      <nav id="navigationDrawer" class="app-bar__navigation">
+        <ul>
+          <li><a href="./" title="Ke Halaman Home">Home</a></li>
+          <li><a href="#/favorite" title="Ke Halaman favorite">Favorite</a></li>
+          <li><a href="https://www.instagram.com/krs_novita2717" title="Ke Sosial Media Author">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="jumbotron">
+      <div class="hero-image">
+        <figure>
+          <img src="images/hero-image.jpg" alt="Tampilan meja yang ada di restoran">
+        </figure>
+      </div>
+      <div class="inner">
+        <h1 class="title">Flavorista</h1>
+        <p class="subtitle">
+          Explore Our Restaurant Selection
+        </p>
+      </div>
+    </div>
+  </header>
+  <main id="mainContent">
+    <h1 class="section__heading">Explore Restaurant</h1>
+    <div id="restaurant-list">
+      <!-- Daftar restaurant -->
+    </div>
+  </main>
+  <footer>
+    <p>All data obtained from <a href="https://restaurant-api.dicoding.dev/" target="_blank" rel="noreferrer">Dicoding
+        Restaurant API</a></p>
+  </footer>
+</body>
+
 </html>

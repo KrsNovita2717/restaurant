@@ -1,3 +1,263 @@
-img {
-  display: block;
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+/* 
+Color in this file:
+#ca4e79
+#bf1722
+#f7dfff
+#ffc18e
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
 }
+
+body {
+  font-family: 'Lora', sans-serif;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+a, button, i {
+  min-width: 44px;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  padding: 8px;
+  background-color: #bf1722;
+  color: white;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.app-bar{
+  padding: 0 16px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  transition: background-color 0.3s;
+}
+
+.app-bar .app-bar__menu {
+  display: flex;
+  align-items: center;
+}
+
+.app-bar .app-bar__menu button {
+  background-color: transparent;
+  border: none;
+  font-size: 32px;
+  padding: 8px;
+  cursor: pointer;
+  color: #ca4e79;
+  font-weight: 700;
+  line-height: 58px;
+}
+
+#close-menu {
+  display: none;
+  font-size: 32px;
+  color: #ca4e79;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: white;
+  width: 0;
+  width: 150px;
+  margin: 0;
+  position: absolute;
+  left: -180px;
+  top:0;
+  padding: 12px;
+  transition: left 0.3s;
+}
+
+.app-bar .app-bar__brand {
+  display: flex;
+  align-items: center;
+}
+
+.app-bar .app-bar__brand h1 a {
+  color: #ca4e79;
+  text-transform: uppercase;
+  font-size: 26px;
+  user-select: none;
+}
+
+.app-bar .app-bar__navigation {
+  position: absolute;
+  top: 50px;
+  left: -180px;
+  width: 150px;
+  transition: all 0.3s;
+  padding: 8px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.app-bar .app-bar__navigation.open,
+#close-menu {
+  left: 0;
+}
+
+.app-bar .app-bar__navigation ul li {
+  list-style-type: none;
+}
+
+.app-bar .app-bar__navigation ul li a {
+  display: inline-block;
+  color: #ca4e79;
+  padding: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  vertical-align: middle;
+  background-position: center;
+  background-color: #000;
+}
+
+.jumbotron img {
+  top: 0;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  position: absolute;
+  opacity: .7;
+}
+
+.jumbotron .inner {
+  text-align: center;
+  margin: 0 auto;
+  color: #ffc18e;
+  z-index: 2;
+}
+
+.jumbotron .title {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.jumbotron .subtitle {
+  margin-top: 10px;
+}
+
+main {
+  padding: 32px;
+  flex: 1;
+}
+
+#mainContent {
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+#mainContent .section__heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ca4e79;
+  text-decoration: underline;
+  line-height: 44px;
+}
+
+.restaurant-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+.restaurant-item {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.restaurant-label {
+  background-color: #ffc18e;
+  max-width: fit-content;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  color: #ca4e79;
+  font-weight: 700;
+  display: inline;
+}
+
+.restaurant-label span {
+  background-color: #ca4e79;
+  padding: .5rem;
+  position: absolute;
+  color: #ffc18e;
+  top: 100%;
+  left: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.restaurant-img img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.restaurant-overview {
+  padding: 1rem;
+}
+
+.restaurant-name a{
+  font-weight: 700;
+  color: #7a4069;
+}
+
+.restaurant-desc {
+  color: #ca4e79;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+footer {
+  display: inline;
+}
+
+footer p {
+  text-align: center;
+  color: #ffc18e;
+  background-color: #513252;
+  padding: 2rem;
+  letter-spacing: 1.5px;
+}
+
+footer a{
+  color: #ca4e79;
+}
+
