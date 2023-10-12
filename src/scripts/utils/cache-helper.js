@@ -33,6 +33,7 @@ const CacheHelper = {
     if (!response || response.status !== 200) {
       return response;
     }
+
     await this._addCache(request);
     return response;
   },
@@ -41,7 +42,6 @@ const CacheHelper = {
     const cache = await this._openCache();
     cache.add(request);
   },
-
 };
 
 export default CacheHelper;
