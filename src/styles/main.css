@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-a, button, i {
+a, button{
   min-width: 44px;
   min-height: 44px;
   text-decoration: none;
@@ -106,7 +106,7 @@ a, button, i {
 
 .app-bar .app-bar__navigation {
   position: absolute;
-  top: 50px;
+  top: 74px;
   left: -180px;
   width: 150px;
   transition: all 0.3s;
@@ -145,7 +145,7 @@ a, button, i {
 .jumbotron img {
   top: 0;
   width: 100%;
-  height: 50%;
+  height: 50vh;
   object-fit: cover;
   position: absolute;
   opacity: .7;
@@ -185,13 +185,13 @@ main {
   line-height: 44px;
 }
 
-.restaurant-list {
+.restaurants__list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
 }
 
-.restaurant-item {
+.restaurant__item {
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -199,50 +199,97 @@ main {
   margin-bottom: 16px;
 }
 
-.restaurant-label {
+.item__heading {
+  display: inline-block;
+  width: 100%;
+  max-height: 200px;
+}
+
+.item__heading .label__text {
   background-color: #ffc18e;
   max-width: fit-content;
   margin: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   position: absolute;
   color: #ca4e79;
   font-weight: 700;
-  display: inline;
 }
 
-.restaurant-label span {
+.item__heading .label__text span {
   background-color: #ca4e79;
   padding: .5rem;
   position: absolute;
   color: #ffc18e;
   top: 100%;
   left: 0;
-  display: flex;
   gap: 1rem;
 }
 
-.restaurant-img img {
+.item__heading img {
   width: 100%;
   max-height: 200px;
   object-fit: cover;
 }
 
-.restaurant-overview {
+.item__overview {
   padding: 1rem;
 }
 
-.restaurant-name a{
+/* .restaurant-name a{
   font-weight: 700;
   color: #7a4069;
-}
+} */
 
-.restaurant-desc {
+.item__overview .item__desc {
+  text-align: justify;
   color: #ca4e79;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+}
+
+.restaurant__details {
+  display: flex;
+  flex-direction: column;
+}
+.restaurant__name {
+  color:
+}
+
+.restaurant__poster {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.restaurant__menus {
+  display: grid;
+}
+
+.menu-category {
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr); */
+  grid-gap: 10px;
+  border: 1px solid #ccc;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  margin: 5px 0;
+}
+
+.restaurant__overview p{
+  max-height: 150px;
+  overflow-y: scroll;
+
 }
 
 footer {

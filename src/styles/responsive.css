@@ -53,20 +53,14 @@
     font-size: 40px;
   }
 
-  #restaurant-list {
-    text-align: justify;
-    display: grid;
+  .restaurants__list {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
   }
 }
 
 @media screen and (min-width: 900px) {
-  #restaurant-list {
-    text-align: justify;
-    display: grid;
+  .restaurants__list {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
   }
 }
 
@@ -75,17 +69,12 @@
     font-size: 50px;
   }
 
-  .menu-list a {
-    font-size: 18px;
-    padding: 0 2rem;
-  }
-
   .jumbotron img {
     width: 1000px;
     min-width: 100%;
   }
 
-  #content {
+  #mainContentcontent {
     width: 1200px;
     margin: 0 auto;
   }
