@@ -6,7 +6,8 @@ import { createRestaurantDetailTemplate, createRestaurantReviewsTemplate } from 
 const Detail = {
   async render() {
     return `
-      <div id="restaurant" class="restaurant"></div>
+      <div id="restaurant" class="restaurant__details">
+      </div>
       <div id="likeButtonContainer"></div>
     `;
   },
@@ -27,13 +28,8 @@ const Detail = {
         rating: restaurant.rating,
       },
     });
-    console.log('resto id: ', restaurant.id);
-    restaurantContainer.innerHTML += `
-      <h3>Review Restaurant</h3>
-      <div class="restaurant-review"></div>
-    `;
 
-    const restaurantReview = document.querySelector('.restaurant-review');
+    const restaurantReview = document.querySelector('.reviews__list');
     restaurant.customerReviews.forEach((review) => {
       restaurantReview.innerHTML += createRestaurantReviewsTemplate(review);
     });

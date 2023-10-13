@@ -1,6 +1,8 @@
+import 'regenerator-runtime';
 import routes from '../routes/routes';
 import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
+import { createErrorPage, createLoader } from './templates/template-creator';
 
 class App {
   constructor({ button, drawer, content }) {
@@ -20,10 +22,25 @@ class App {
   }
 
   async renderPage() {
-    const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url];
-    this._content.innerHTML = await page.render();
-    await page.afterRender();
+    const loaderElement = createLoader();
+    this._content.innerHTML += loaderElement;
+    console.log('elemen loader', loaderElement);
+    const idLoader = document.querySelector('#loader');
+    idLoader.style.display = 'block';
+
+    setTimeout(async () => {
+      idLoader.style.display = 'none';
+
+      const url = UrlParser.parseActiveUrlWithCombiner();
+      const page = routes[url];
+      try {
+        this._content.innerHTML = await page.render();
+        await page.afterRender();
+      } catch (error) {
+        console.error('Terjadi kesalahan:', error);
+        this._content.innerHTML = createErrorPage();
+      }
+    }, 1000);
   }
 }
 

@@ -13,10 +13,10 @@ Color in this file:
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  font-family: 'Lora', sans-serif;
 }
 
 body {
-  font-family: 'Lora', sans-serif;
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -44,7 +44,7 @@ a, button{
   top: 0;
 }
 
-.app-bar{
+app-bar{
   padding: 0 16px;
   background-color: transparent;
   display: flex;
@@ -59,12 +59,12 @@ a, button{
   transition: background-color 0.3s;
 }
 
-.app-bar .app-bar__menu {
+app-bar .app-bar__menu {
   display: flex;
   align-items: center;
 }
 
-.app-bar .app-bar__menu button {
+app-bar .app-bar__menu button {
   background-color: transparent;
   border: none;
   font-size: 32px;
@@ -75,36 +75,20 @@ a, button{
   line-height: 58px;
 }
 
-#close-menu {
-  display: none;
-  font-size: 32px;
-  color: #ca4e79;
-  cursor: pointer;
-  font-weight: 700;
-  background-color: white;
-  width: 0;
-  width: 150px;
-  margin: 0;
-  position: absolute;
-  left: -180px;
-  top:0;
-  padding: 12px;
-  transition: left 0.3s;
-}
 
-.app-bar .app-bar__brand {
+app-bar .app-bar__brand {
   display: flex;
   align-items: center;
 }
 
-.app-bar .app-bar__brand h1 a {
+app-bar .app-bar__brand h1 a {
   color: #ca4e79;
   text-transform: uppercase;
   font-size: 26px;
   user-select: none;
 }
 
-.app-bar .app-bar__navigation {
+app-bar .app-bar__navigation {
   position: absolute;
   top: 74px;
   left: -180px;
@@ -115,16 +99,16 @@ a, button{
   overflow: hidden;
 }
 
-.app-bar .app-bar__navigation.open,
+app-bar .app-bar__navigation.open,
 #close-menu {
   left: 0;
 }
 
-.app-bar .app-bar__navigation ul li {
+app-bar .app-bar__navigation ul li {
   list-style-type: none;
 }
 
-.app-bar .app-bar__navigation ul li a {
+app-bar .app-bar__navigation ul li a {
   display: inline-block;
   color: #ca4e79;
   padding: 8px;
@@ -132,7 +116,7 @@ a, button{
   width: 100%;
 }
 
-.jumbotron {
+app-jumbotron {
   display: flex;
   align-items: center;
   width: 100%;
@@ -142,7 +126,7 @@ a, button{
   background-color: #000;
 }
 
-.jumbotron img {
+app-jumbotron img {
   top: 0;
   width: 100%;
   height: 50vh;
@@ -151,19 +135,19 @@ a, button{
   opacity: .7;
 }
 
-.jumbotron .inner {
+app-jumbotron .inner {
   text-align: center;
   margin: 0 auto;
   color: #ffc18e;
   z-index: 2;
 }
 
-.jumbotron .title {
+app-jumbotron .title {
   font-weight: 600;
   font-size: 32px;
 }
 
-.jumbotron .subtitle {
+app-jumbotron .subtitle {
   margin-top: 10px;
 }
 
@@ -235,11 +219,6 @@ main {
   padding: 1rem;
 }
 
-/* .restaurant-name a{
-  font-weight: 700;
-  color: #7a4069;
-} */
-
 .item__overview .item__desc {
   text-align: justify;
   color: #ca4e79;
@@ -253,7 +232,25 @@ main {
 .restaurant__details {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
+
+.restaurant__details h3{
+  color: #ca4e79;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: .5rem;
+}
+
+.restaurant__details h4{
+  color: #bf1722;
+}
+
+
+.restaurant__info i{
+  color: #ffc18e;
+}
+
 .restaurant__name {
   color:
 }
@@ -268,27 +265,129 @@ main {
 }
 
 .menu-category {
-  /* display: grid;
-  grid-template-columns: repeat(5, 1fr); */
-  grid-gap: 10px;
   border: 1px solid #ccc;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.menu-category h4{
+  margin: 1rem;
+  text-align: center;
+  color: #513252;
 }
 
 .menu-list {
+  margin: .7rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .menu-list li {
   margin: 5px 0;
 }
 
+.restaurant__overview {
+  /* border: 1px solid #ccc; */
+}
+
 .restaurant__overview p{
-  max-height: 150px;
+  margin: 1rem;
+  /* max-height: 150px;
+  overflow-y: scroll; */
+  text-align: justify;
+}
+
+.restaurant__reviews{
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.reviews__list{
+  margin: auto;
+  width: 100%;
+  height: 200px;
   overflow-y: scroll;
+  border: 1px solid #ccc;
+}
+
+.review {
+  margin: auto 1rem;
+  margin-bottom: 1rem;
+}
+
+.review__heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-weight: bold;
+}
+
+.review__heading p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review__heading .date {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.review__form {
+  display: none;
+  margin: auto 1rem;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.review__form label {
+  font-weight: bold;
+}
+
+.review__form input[type="text"],
+.review__form textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.review__form textarea {
+  height: 100px;
+}
+
+.review__form button {
+  background-color: #ca4e79;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review__form button:hover {
+  background-color: #0056a3;
+}
+
+#add-review-button {
+  margin: 1rem;
+  background-color: #ca4e79;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-review-button:hover {
+  background-color: #0056a3;
 }
 
 .like {
@@ -310,19 +409,62 @@ main {
   cursor: pointer;
 }
 
-footer {
-  display: inline;
-}
-
-footer p {
+#loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
   text-align: center;
-  color: #ffc18e;
-  background-color: #513252;
-  padding: 2rem;
-  letter-spacing: 1.5px;
+  margin: auto;
 }
 
-footer a{
+.loader__message {
+  color: white;
+  margin: 50vh auto;
+  font-size: 40px;
+
+}
+
+.loader__message p {
+  margin-top: 10px;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  height: 25vh;
+  margin: auto 1rem;
+}
+
+.error-page__title {
+  font-size: 24px;
+  color: #ff0000;
+}
+
+.error-page__message {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+
+footer {
+  width: 100%;
+  padding: 2rem;
+  background-color: #513252;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+app-footer p {
+  color: #ffc18e;
+}
+
+app-footer a{
   color: #ca4e79;
 }
 

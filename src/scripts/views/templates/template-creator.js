@@ -9,7 +9,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
       <h4>Alamat: </h4>
       <p>${restaurant.address}, Kota ${restaurant.city}</p>
       <h4>Rating: </h4>
-      <p><i class="fa-solid fa-star"></i> ${restaurant.rating}</p>
+      <p><i class="fa-solid fa-star"></i> ${restaurant.rating}/5</p>
     </div>
     <div class="restaurant__menus">
         <h3>Daftar Menu</h3>
@@ -29,6 +29,20 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <div class="restaurant__overview">
       <h3>Overview Restaurant</h3>
         <p>${restaurant.description}</p>
+    </div>
+    <div class="restaurant__reviews">
+      <h3>Review Restaurant</h3>
+      <div class="reviews__list"></div>
+      <button id="add-review-button">Tambah Review</button>
+      <div class="review__form">
+        <form id="addReview">
+          <label for="name">Nama:</label>
+          <input type="text" name="name" id="name" placeholder="Masukan Nama Anda" required>
+          <label for="review__text">Ulasan:</label>
+          <textarea name="review__text" id="review__text" placeholder="Masukan Ulasan Anda" required></textarea>
+          <button type="submit">Kirim Ulasan</button>
+        </form>
+      </div>
     </div>
   </div>
 `;
@@ -50,12 +64,18 @@ const createRestaurantItemTemplate = (restaurant) => `
 
 const createRestaurantReviewsTemplate = (reviews) => `
   <div class="review">
-    <p>
-    <span class="name">${reviews.name}</span> &bull; <span class="date">${reviews.date}</span>
-    </p>
+    <div class="review__heading">
+      <p>${reviews.name}<span class="date">${reviews.date}</span></p>
+    </div>
+    <div class="review__content">
     <p>${reviews.review}</p>
+    </div>
   </div>
 `;
+
+// createFormReviews = () => `
+
+// `;
 
 const createLikeButtonTemplate = () => `
 <button aria-label="like this movie" id="likeButton" class="like">
@@ -69,10 +89,28 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
+const createLoader = () => `
+  <div id="loader">
+    <div class="loader__message">
+      <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+      <p>Loading</p>
+    </div>
+  </div>
+`;
+
+const createErrorPage = () => `
+  <div class="error-page">
+    <h2 class="error-page__title">Oops! Something went wrong.</h2>
+    <p class="error-page__message">We're sorry, but an error occurred while fetching data.</p>
+  </div>
+`;
+
 export {
   createRestaurantItemTemplate,
   createRestaurantDetailTemplate,
   createRestaurantReviewsTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
+  createLoader,
+  createErrorPage,
 };
