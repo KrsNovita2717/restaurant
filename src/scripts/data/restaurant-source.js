@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../global/api-endpoint';
+import CONFIG from '../global/config';
 
 class RestaurantSource {
   static async exploreRestaurant() {
@@ -11,8 +12,21 @@ class RestaurantSource {
     const urlFecth = API_ENDPOINT.DETAIL(id);
     const response = await fetch(urlFecth);
     const responseJson = await response.json();
-    console.log('hasil fetch detail', responseJson.restaurant);
     return responseJson.restaurant;
+  }
+
+  static async sendReview(review) {
+    const response = await fetch(API_ENDPOINT.REVIEW, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': CONFIG.KEY,
+      },
+      body: JSON.stringify(review),
+    });
+    const responseJson = await response.json();
+    console.log('data hasil', response);
+    return responseJson;
   }
 }
 

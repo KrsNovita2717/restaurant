@@ -1,31 +1,36 @@
 import CONFIG from '../../global/config';
 
 const createRestaurantDetailTemplate = (restaurant) => `
-  <div class="restaurant__details">
     <h2 class="restaurant__name section__heading">${restaurant.name}</h2>
-    <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="restaurant__poster">
     <div class="restaurant__info">
-      <h3>Detail Restaurant</h3>
-      <h4>Alamat: </h4>
-      <p>${restaurant.address}, Kota ${restaurant.city}</p>
-      <h4>Rating: </h4>
-      <p><i class="fa-solid fa-star"></i> ${restaurant.rating}/5</p>
+      <div class="restaurant__poster">
+        <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
+      </div>
+      <div clas="info__body">
+        <h3>Detail Restaurant</h3>
+        <h4>Alamat: </h4>
+        <p>${restaurant.address}, Kota ${restaurant.city}</p>
+        <h4>Rating: </h4>
+        <p><i class="fa-solid fa-star"></i> ${restaurant.rating}/5</p>
+      </div>
     </div>
     <div class="restaurant__menus">
         <h3>Daftar Menu</h3>
         <div class="menu-category">
+        <div id="menu-foods">
           <h4>Makanan:</h4>
           <ul class="menu-list">
             ${restaurant.menus.foods.map((food) => `<li>${food.name}</li>`).join('')}
           </ul>
         </div>
-        <div class="menu-category">
+        <div id="menu-drinks">
           <h4>Minuman:</h4>
           <ul class="menu-list">
             ${restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).join('')}
           </ul>
         </div>
       </div>
+    </div>
     <div class="restaurant__overview">
       <h3>Overview Restaurant</h3>
         <p>${restaurant.description}</p>
@@ -33,18 +38,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <div class="restaurant__reviews">
       <h3>Review Restaurant</h3>
       <div class="reviews__list"></div>
-      <button id="add-review-button">Tambah Review</button>
-      <div class="review__form">
-        <form id="addReview">
-          <label for="name">Nama:</label>
-          <input type="text" name="name" id="name" placeholder="Masukan Nama Anda" required>
-          <label for="review__text">Ulasan:</label>
-          <textarea name="review__text" id="review__text" placeholder="Masukan Ulasan Anda" required></textarea>
-          <button type="submit">Kirim Ulasan</button>
-        </form>
-      </div>
     </div>
-  </div>
 `;
 
 const createRestaurantItemTemplate = (restaurant) => `
@@ -73,18 +67,26 @@ const createRestaurantReviewsTemplate = (reviews) => `
   </div>
 `;
 
-// createFormReviews = () => `
-
-// `;
+const createFormReviews = () => `
+  <div class="review__form">
+    <form id="addReview">
+      <label for="name">Nama:</label>
+      <input type="text" name="name" id="name" placeholder="Masukan Nama Anda" required>
+      <label for="review__text">Ulasan:</label>
+      <textarea name="review__text" id="review__text" placeholder="Masukan Ulasan Anda" required></textarea>
+      <button type="submit">Kirim Ulasan</button>
+    </form>
+  </div>
+`;
 
 const createLikeButtonTemplate = () => `
-<button aria-label="like this movie" id="likeButton" class="like">
+<button aria-label="like this" id="likeButton" class="like">
     <i class="fa-regular fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
@@ -105,12 +107,21 @@ const createErrorPage = () => `
   </div>
 `;
 
+const createEmptyPage = () => `
+  <div class="empty-page">
+    <h2 class="empty-page__title">Oops!</h2>
+    <p class="empty-page__message">Belum ada data restoran favorit yang dimasukkan.</p>
+  </div>
+`;
+
 export {
   createRestaurantItemTemplate,
   createRestaurantDetailTemplate,
   createRestaurantReviewsTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
+  createFormReviews,
   createLoader,
   createErrorPage,
+  createEmptyPage,
 };

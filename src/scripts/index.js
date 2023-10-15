@@ -14,6 +14,17 @@ const app = new App({
   content: document.querySelector('#mainContent'),
 });
 
+function handleScroll() {
+  const appbar = document.querySelector('app-bar');
+  const { scrollY } = window;
+
+  if (scrollY > 100) {
+    appbar.classList.add('scroll');
+  } else {
+    appbar.classList.remove('scroll');
+  }
+}
+
 window.addEventListener('hashchange', () => {
   app.renderPage();
 });
@@ -22,3 +33,5 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
 });
+
+window.addEventListener('scroll', handleScroll);

@@ -6,8 +6,7 @@ const Explore = {
     return `
       <section id="explore">
         <h2 class="section__heading">Explore Page</h2>
-        <div id="restaurants" class="restaurants__list">
-        </div>
+        <div id="restaurants" class="restaurants__list"></div>
       </section>
     `;
   },
@@ -15,10 +14,10 @@ const Explore = {
   async afterRender() {
     const restaurants = await RestaurantSource.exploreRestaurant();
     const restaurantsContainer = document.querySelector('#restaurants');
+
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
     });
-    console.log(restaurants);
   },
 };
 

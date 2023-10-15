@@ -6,7 +6,7 @@ class AppBar extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="app-bar__menu">
-        <button id="menu-button" title="off canvas button" aria-label="off canvas button">
+        <button id="menu-button" title="menu button" aria-label="menu button">
           <i class="fa-solid fa-bars" id="open-menu"></i>
         </button>
       </div>
@@ -17,9 +17,9 @@ class AppBar extends HTMLElement {
       </div>
       <nav id="navigationDrawer" class="app-bar__navigation">
         <ul>
-          <li><a href="#/explore" title="Ke Halaman Home">Home</a></li>
-          <li><a href="#/favorite" title="Ke Halaman favorite">Favorite</a></li>
-          <li><a href="https://www.instagram.com/krs_novita2717" title="Ke Sosial Media Author">About Us</a></li>
+          <li class="nav__item"><a href="./" title="Ke Halaman Home">Home</a></li>
+          <li class="nav__item"><a href="#/favorite" title="Ke Halaman favorite">Favorite</a></li>
+          <li class="nav__item"><a href="https://www.twitter.com/krs_novita2717" title="Ke Sosial Media Author">About Us</a></li>
         </ul>
       </nav>
     `;

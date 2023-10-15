@@ -1,14 +1,15 @@
 @media screen and (min-width: 650px) {
-  .app-bar {
+  app-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .app-bar .app-bar__menu{
+  app-bar .app-bar__menu {
     display: none;
   }
-  .app-bar .app-bar__navigation {
+
+  app-bar .app-bar__navigation {
     position: relative;
     top: 0;
     left: 0;
@@ -18,26 +19,25 @@
     background-color: transparent;
   }
 
-  .app-bar .app-bar__navigation ul {
+  app-bar .app-bar__navigation ul {
     display: flex;
   }
 
-  .app-bar .app-bar__navigation ul li {
+  app-bar .app-bar__navigation ul li {
     margin: auto 44px;
     font-weight: 600;
     font-size: 18px;
-
   }
 
-  .app-bar .app-bar__navigation ul li a {
+  app-bar .app-bar__navigation ul li a {
     display: inline-block;
     color: #ca4e79;
     padding: 8px;
     margin-bottom: 5px;
     width: 100%;
   }
-  
-  .app-bar .app-bar__navigation ul li a:hover {
+
+  app-bar .app-bar__navigation ul li a:hover {
     color: #f7dfff;
     background-color: #ca4e79;
     border-radius: 50px;
@@ -46,7 +46,7 @@
 
 @media screen and (min-width: 700px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .inner .title {
@@ -55,6 +55,19 @@
 
   .restaurants__list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .restaurant__info,
+  .restaurant__menus .menu-category {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .restaurant__poster img {
+    width: 50vh;
+    object-fit: cover;
   }
 }
 
@@ -74,7 +87,12 @@
     min-width: 100%;
   }
 
-  #mainContentcontent {
+  .restaurant__poster img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #mainContent {
     width: 1200px;
     margin: 0 auto;
   }

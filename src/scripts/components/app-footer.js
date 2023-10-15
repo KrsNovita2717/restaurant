@@ -5,8 +5,7 @@ class AppFooter extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <p>All data obtained from <a href="https://restaurant-api.dicoding.dev/" target="_blank" rel="noreferrer">Dicoding
-      Restaurant API</a></p>
+      <p>All data obtained from <a href="https://restaurant-api.dicoding.dev/" target="_blank" rel="noreferrer">Dicoding Restaurant API</a></p>
       <p>Flavouriesta, &copy; Copyright 2023</p>
     `;
   }

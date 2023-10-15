@@ -21,10 +21,28 @@ class App {
     });
   }
 
+  static _showJumbotron() {
+    const jumbotron = document.querySelector('app-jumbotron');
+    const appBar = document.querySelector('app-bar');
+    if (jumbotron) {
+      jumbotron.style.display = 'flex';
+      appBar.style.backgroundColor = 'tranparent';
+    }
+  }
+
+  static _hideJumbotron() {
+    const jumbotron = document.querySelector('app-jumbotron');
+    const appBar = document.querySelector('app-bar');
+    if (jumbotron) {
+      jumbotron.style.display = 'none';
+      appBar.style.backgroundColor = '#f7dfff';
+    }
+  }
+
   async renderPage() {
     const loaderElement = createLoader();
     this._content.innerHTML += loaderElement;
-    console.log('elemen loader', loaderElement);
+
     const idLoader = document.querySelector('#loader');
     idLoader.style.display = 'block';
 
@@ -34,6 +52,11 @@ class App {
       const url = UrlParser.parseActiveUrlWithCombiner();
       const page = routes[url];
       try {
+        if (url.includes('favorite') || url.includes('detail')) {
+          App._hideJumbotron();
+        } else {
+          App._showJumbotron();
+        }
         this._content.innerHTML = await page.render();
         await page.afterRender();
       } catch (error) {

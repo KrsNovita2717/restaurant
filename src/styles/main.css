@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
-
-/* 
-Color in this file:
-#ca4e79
-#bf1722
-#f7dfff
-#ffc18e
-*/
+@font-face {
+  font-family: 'Lora';
+  src: url('../public/fonts/Lora-Regular.ttf') format('truetype');
+  font-wight: normal;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
@@ -18,17 +15,19 @@ Color in this file:
 
 body {
   background-color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
+  min-height: 100vh;
 }
 
-a, button{
+a, button {
   min-width: 44px;
   min-height: 44px;
+  display: inline-block;
   text-decoration: none;
 }
+
 
 .skip-link {
   position: absolute;
@@ -76,12 +75,18 @@ app-bar .app-bar__menu button {
 }
 
 
+app-bar .app-bar__menu button .icon {
+  fill: white;
+}
+
 app-bar .app-bar__brand {
   display: flex;
   align-items: center;
 }
 
-app-bar .app-bar__brand h1 a {
+app-bar .app-bar__brand a {
+  width: 100%;
+  height: 100%;
   color: #ca4e79;
   text-transform: uppercase;
   font-size: 26px;
@@ -99,8 +104,7 @@ app-bar .app-bar__navigation {
   overflow: hidden;
 }
 
-app-bar .app-bar__navigation.open,
-#close-menu {
+app-bar .app-bar__navigation.open{
   left: 0;
 }
 
@@ -114,6 +118,10 @@ app-bar .app-bar__navigation ul li a {
   padding: 8px;
   margin-bottom: 5px;
   width: 100%;
+}
+
+.scroll {
+  background-color: #f7dfff;
 }
 
 app-jumbotron {
@@ -153,12 +161,8 @@ app-jumbotron .subtitle {
 
 main {
   padding: 32px;
-  flex: 1;
-}
-
-#mainContent {
-  margin: 0 auto;
-  min-height: 100%;
+  margin: 10px auto;
+  min-height: 78vh;
 }
 
 #mainContent .section__heading {
@@ -168,7 +172,14 @@ main {
   text-decoration: underline;
   line-height: 44px;
 }
+#mainContent #favorite,
+#mainContent .restaurant__details {
+  padding-top: 80px;
+}
 
+.restaurants__list{
+  width: 100%;
+}
 .restaurants__list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -255,7 +266,7 @@ main {
   color:
 }
 
-.restaurant__poster {
+.restaurant__poster img {
   max-width: 100%;
   object-fit: cover;
 }
@@ -280,6 +291,7 @@ main {
   margin: .7rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   list-style: none;
 }
 
@@ -287,14 +299,7 @@ main {
   margin: 5px 0;
 }
 
-.restaurant__overview {
-  /* border: 1px solid #ccc; */
-}
-
 .restaurant__overview p{
-  margin: 1rem;
-  /* max-height: 150px;
-  overflow-y: scroll; */
   text-align: justify;
 }
 
@@ -312,8 +317,7 @@ main {
 }
 
 .review {
-  margin: auto 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .review__heading {
@@ -335,8 +339,6 @@ main {
 }
 
 .review__form {
-  display: none;
-  margin: auto 1rem;
   margin-top: 20px;
   border: 1px solid #ccc;
   padding: 10px;
@@ -350,6 +352,7 @@ main {
 
 .review__form input[type="text"],
 .review__form textarea {
+  min-height: 44px;
   width: 100%;
   padding: 5px;
   margin: 5px 0;
@@ -375,21 +378,6 @@ main {
   background-color: #0056a3;
 }
 
-#add-review-button {
-  margin: 1rem;
-  background-color: #ca4e79;
-  font-size: 18px;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#add-review-button:hover {
-  background-color: #0056a3;
-}
-
 .like {
   width: 55px;
   height: 55px;
@@ -407,6 +395,11 @@ main {
   font-size: 18px;
   color: white;
   cursor: pointer;
+}
+
+.like.liked {
+  color: #db0000;
+  background-color: white;
 }
 
 #loader {
@@ -433,28 +426,28 @@ main {
   margin-top: 10px;
 }
 
-.error-page {
-  display: flex;
-  flex-direction: column;
+.error-page, .empty-page {
+  width: 100%;
+  height: auto;
   text-align: center;
-  justify-content: center;
-  height: 25vh;
-  margin: auto 1rem;
+  margin: 1rem auto;
 }
 
-.error-page__title {
+.error-page__title
+.empty-page__title {
   font-size: 24px;
   color: #ff0000;
 }
 
-.error-page__message {
+.error-page__message
+.empty-page__message {
   margin-top: 16px;
   font-size: 18px;
 }
 
 
 footer {
-  width: 100%;
+  bottom: 0;
   padding: 2rem;
   background-color: #513252;
   letter-spacing: 1.5px;

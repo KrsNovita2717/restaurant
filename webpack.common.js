@@ -6,7 +6,6 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
-    // sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -54,6 +53,29 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurantdb-api',
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'font-awesome-cache',
+            expiration: {
+              maxEntries: 30,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
     }),
   ],
 };
