@@ -9,9 +9,9 @@ import './components/app-jumbotron';
 import './components/app-footer';
 
 const app = new App({
-  button: document.querySelector('#open-menu'),
+  button: document.querySelector('#menu-button'),
   drawer: document.querySelector('#navigationDrawer'),
-  content: document.querySelector('#mainContent'),
+  content: document.querySelector('main'),
 });
 
 function handleScroll() {
@@ -27,6 +27,7 @@ function handleScroll() {
 
 window.addEventListener('hashchange', () => {
   app.renderPage();
+  window.scrollTo(0, 0);
 });
 
 window.addEventListener('load', () => {

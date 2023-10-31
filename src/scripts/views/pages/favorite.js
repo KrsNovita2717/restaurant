@@ -19,7 +19,7 @@ const Favorite = {
     } else {
       const restaurantsContainer = document.createElement('div');
       restaurantsContainer.id = 'restaurants';
-      restaurantsContainer.classList.add('restaurant__list');
+      restaurantsContainer.classList.add('restaurants__list');
       restaurants.forEach((restaurant) => {
         restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
       });

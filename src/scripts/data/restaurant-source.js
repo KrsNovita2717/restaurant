@@ -1,5 +1,4 @@
 import API_ENDPOINT from '../global/api-endpoint';
-import CONFIG from '../global/config';
 
 class RestaurantSource {
   static async exploreRestaurant() {
@@ -20,12 +19,10 @@ class RestaurantSource {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': CONFIG.KEY,
       },
       body: JSON.stringify(review),
     });
     const responseJson = await response.json();
-    console.log('data hasil', response);
     return responseJson;
   }
 }

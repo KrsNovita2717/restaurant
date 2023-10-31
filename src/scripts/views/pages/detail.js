@@ -11,8 +11,10 @@ import {
 const Detail = {
   async render() {
     return `
+    <section id="detail">
       <div id="restaurant" class="restaurant__details"></div>
       <div id="likeButtonContainer"></div>
+    </section>
     `;
   },
 

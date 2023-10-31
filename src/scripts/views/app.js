@@ -19,6 +19,17 @@ class App {
       drawer: this._drawer,
       content: this._content,
     });
+
+    const skipLink = document.querySelector('.skip-link');
+    skipLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      const id = skipLink.getAttribute('href');
+      const targetSection = document.querySelector(id);
+      if (targetSection) {
+        targetSection.setAttribute('tabindex', 0);
+        targetSection.focus();
+      }
+    });
   }
 
   static _showJumbotron() {
@@ -61,7 +72,7 @@ class App {
         await page.afterRender();
       } catch (error) {
         console.error('Terjadi kesalahan:', error);
-        this._content.innerHTML = createErrorPage();
+        this._content.innerHTML += createErrorPage();
       }
     }, 1000);
   }

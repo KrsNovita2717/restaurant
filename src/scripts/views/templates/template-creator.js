@@ -1,13 +1,13 @@
 import CONFIG from '../../global/config';
 
 const createRestaurantDetailTemplate = (restaurant) => `
-    <h2 class="restaurant__name section__heading">${restaurant.name}</h2>
+    <h2 class="restaurant__name section__heading" tabindex="0">${restaurant.name}</h2>
     <div class="restaurant__info">
       <div class="restaurant__poster">
         <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
       </div>
       <div clas="info__body">
-        <h3>Detail Restaurant</h3>
+        <h3 tabindex="0">Detail Restaurant</h3>
         <h4>Alamat: </h4>
         <p>${restaurant.address}, Kota ${restaurant.city}</p>
         <h4>Rating: </h4>
@@ -15,7 +15,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
       </div>
     </div>
     <div class="restaurant__menus">
-        <h3>Daftar Menu</h3>
+        <h3 tabindex="0">Daftar Menu</h3>
         <div class="menu-category">
         <div id="menu-foods">
           <h4>Makanan:</h4>
@@ -32,11 +32,11 @@ const createRestaurantDetailTemplate = (restaurant) => `
       </div>
     </div>
     <div class="restaurant__overview">
-      <h3>Overview Restaurant</h3>
+      <h3 tabindex="0">Overview Restaurant</h3>
         <p>${restaurant.description}</p>
     </div>
     <div class="restaurant__reviews">
-      <h3>Review Restaurant</h3>
+      <h3 tabindex="0">Review Restaurant</h3>
       <div class="reviews__list"></div>
     </div>
 `;
@@ -69,6 +69,7 @@ const createRestaurantReviewsTemplate = (reviews) => `
 
 const createFormReviews = () => `
   <div class="review__form">
+    <h3 tabindex="0">Silahkan tinggalkan ulasan</h3>
     <form id="addReview">
       <label for="name">Nama:</label>
       <input type="text" name="name" id="name" placeholder="Masukan Nama Anda" required>
