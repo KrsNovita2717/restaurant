@@ -9,7 +9,8 @@
     "serve": "http-server dist --port 8080",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "e2e": "codeceptjs run"
+    "e2e": "codeceptjs run",
+    "build-image": "node sharp.js"
   },
   "keywords": [],
   "author": "Novita Kristiana (novitakristiana77@gmail.com)",
@@ -38,6 +39,7 @@
     "jest-environment-jsdom": "^29.6.1",
     "jest-mock": "^29.7.0",
     "playwright": "^1.39.0",
+    "sharp": "^0.32.6",
     "style-loader": "^3.3.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
