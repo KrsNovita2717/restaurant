@@ -45,13 +45,13 @@ const createRestaurantItemTemplate = (restaurant) => `
   <div class="restaurant__item">
     <div class="item__heading">
       <div class="item__label">
-        <p class="label__text">Kota ${restaurant.city} <span><i class="fa-solid fa-star"></i> ${restaurant.rating}</span></p>
+        <p class="label__text">Kota ${restaurant.city || '-'} <span><i class="fa-solid fa-star"></i> ${restaurant.rating || '-'}</span></p>
       </div>
-      <img src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name}" class="item__image">
+      <img src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name || '-'}" class="item__image">
     </div>
     <div class="item__overview">
-      <h3 class="item__name"><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></h3>
-      <p class="item__desc">${restaurant.description}</p>
+      <h3 class="item__name"><a href="/#/detail/${restaurant.id}">${restaurant.name || '-'}</a></h3>
+      <p class="item__desc">${restaurant.description || '-'}</p>
     </div>
   </div>
 `;
@@ -80,14 +80,14 @@ const createFormReviews = () => `
   </div>
 `;
 
-const createLikeButtonTemplate = () => `
-<button aria-label="like this" id="likeButton" class="like">
+const createFavoriteMovieButtonTemplate = () => `
+<button aria-label="favorite this restaurant" id="favoriteButton" class="favorite">
     <i class="fa-regular fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this" id="likeButton" class="like">
+const createUnfavoriteMovieButtonTemplate = () => `
+  <button aria-label="unfavorite this restaurant" id="unfavoriteButton" class="favorite">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
@@ -108,21 +108,13 @@ const createErrorPage = () => `
   </div>
 `;
 
-const createEmptyPage = () => `
-  <div class="empty-page">
-    <h2 class="empty-page__title">Oops!</h2>
-    <p class="empty-page__message">Belum ada data restoran favorit yang dimasukkan.</p>
-  </div>
-`;
-
 export {
   createRestaurantItemTemplate,
   createRestaurantDetailTemplate,
   createRestaurantReviewsTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createFavoriteMovieButtonTemplate,
+  createUnfavoriteMovieButtonTemplate,
   createFormReviews,
   createLoader,
   createErrorPage,
-  createEmptyPage,
 };
