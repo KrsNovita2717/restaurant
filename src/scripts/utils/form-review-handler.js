@@ -16,7 +16,7 @@ const FormReviewHandler = {
     const nameInput = this._formElement.querySelector('#name');
     const reviewInput = this._formElement.querySelector('#review__text');
 
-    if (nameInput.value || reviewInput.value) {
+    if (nameInput.value.length >= 3 && reviewInput.value.length >= 3) {
       const reviewData = {
         id: this._id,
         name: nameInput.value,
@@ -24,7 +24,7 @@ const FormReviewHandler = {
       };
       this._submitReview(reviewData);
     } else {
-      this._errorHandler('Form belum terisi, pastikan telah terisi semua.');
+      this._errorHandler('Nama dan ulasan harus memiliki setidaknya 3 karakter.');
     }
   },
 

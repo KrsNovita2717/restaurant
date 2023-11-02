@@ -1,30 +1,19 @@
+/* eslint-disable no-new */
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant';
-import { createEmptyPage, createRestaurantItemTemplate } from '../templates/template-creator';
+import FavoriteRestaurantSearchPresenter from './favorited-restaurants/favorite-restaurant-search-presenter';
+import FavoriteRestaurantShowPresenter from './favorited-restaurants/favorite-restaurant-show-presenter';
+import FavoriteRestaurantsView from './favorited-restaurants/favorite-restaurant-view';
+
+const view = new FavoriteRestaurantsView();
 
 const Favorite = {
   async render() {
-    return `
-      <section id="favorite">
-        <h2 class="section__heading">Your Favorite Restaurant</h2>
-      </section>
-    `;
+    return view.getTemplate();
   },
 
   async afterRender() {
-    const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    const favoriteContainer = document.querySelector('#favorite');
-
-    if (restaurants.length === 0) {
-      favoriteContainer.innerHTML += createEmptyPage();
-    } else {
-      const restaurantsContainer = document.createElement('div');
-      restaurantsContainer.id = 'restaurants';
-      restaurantsContainer.classList.add('restaurants__list');
-      restaurants.forEach((restaurant) => {
-        restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-      });
-      favoriteContainer.appendChild(restaurantsContainer);
-    }
+    new FavoriteRestaurantShowPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
+    new FavoriteRestaurantSearchPresenter({ view, favoriteRestaurants: FavoriteRestaurantIdb });
   },
 };
 
