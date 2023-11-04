@@ -2,6 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
 module.exports = {
   entry: {
@@ -17,28 +24,49 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin({
+        minify: TerserWebpackPlugin.terserMinify,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+          mangle: true,
+        },
+      }),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 70000,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
@@ -48,8 +76,23 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: [
+              '**/images/**',
+              '**/sharp/**',
+            ],
+          },
+        },
+        {
+          from: path.resolve(__dirname, 'src/public/sharp'),
+          to: path.resolve(__dirname, 'dist/images'),
         },
       ],
+    }),
+    new WebpackShellPluginNext({
+      onBuildStart: {
+        scripts: ['node sharp.js'],
+      },
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
@@ -60,22 +103,40 @@ module.exports = {
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'restaurantdb-api',
-          },
-        },
-        {
-          urlPattern: ({ url }) => url.href.startsWith('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'),
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'font-awesome-cache',
             expiration: {
-              maxEntries: 30,
+              maxEntries: 50,
             },
             cacheableResponse: {
               statuses: [0, 200],
             },
           },
         },
+        {
+          urlPattern: ({ url }) => url.href.includes('fontawesome.com'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'font-awesome-cache',
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
       ],
+    }),
+    new ImageminWebpackPlugin({
+      plugins: [
+        ImageminMozjpeg({
+          quality: 50,
+          progressive: true,
+        }),
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
     }),
   ],
 };
