@@ -23,6 +23,7 @@ class RestaurantSource {
       body: JSON.stringify(review),
     });
     const responseJson = await response.json();
+    console.log('data hasil', response);
     return responseJson;
   }
 }

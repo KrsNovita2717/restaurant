@@ -69,6 +69,10 @@
     width: 50vh;
     object-fit: cover;
   }
+
+  .search-box {
+    width: 80%;
+  }
 }
 
 @media screen and (min-width: 900px) {

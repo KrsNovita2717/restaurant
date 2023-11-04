@@ -1,8 +1,9 @@
 @font-face {
   font-family: 'Lora';
   src: url('../public/fonts/Lora-Regular.ttf') format('truetype');
-  font-wight: normal;
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -28,6 +29,9 @@ a, button {
   text-decoration: none;
 }
 
+img[Attributes Style] {
+  aspect-ratio: auto 640 / 360;
+}
 
 .skip-link {
   position: absolute;
@@ -73,7 +77,6 @@ app-bar .app-bar__menu button {
   font-weight: 700;
   line-height: 58px;
 }
-
 
 app-bar .app-bar__menu button .icon {
   fill: white;
@@ -161,8 +164,8 @@ app-jumbotron .subtitle {
 
 main {
   padding: 32px;
-  margin: 10px auto;
-  min-height: 78vh;
+  margin: auto 15px;
+  min-height: 100vh;
 }
 
 #mainContent .section__heading {
@@ -182,6 +185,12 @@ main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
+}
+
+.emptyLists{
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 
 .restaurant__item {
@@ -376,7 +385,7 @@ main {
   background-color: #0056a3;
 }
 
-.like {
+.favorite {
   width: 55px;
   height: 55px;
   display: flex;
@@ -395,7 +404,7 @@ main {
   cursor: pointer;
 }
 
-.like.liked {
+.favorite.favorited {
   color: #db0000;
   background-color: white;
 }
@@ -424,25 +433,37 @@ main {
   margin-top: 10px;
 }
 
-.error-page, .empty-page {
+.error-page{
   width: 100%;
   height: auto;
   text-align: center;
   margin: 1rem auto;
 }
 
-.error-page__title
-.empty-page__title {
+.error-page__title {
   font-size: 24px;
   color: #ff0000;
 }
 
 .error-page__message
-.empty-page__message {
+.empty-list__message {
   margin-top: 16px;
   font-size: 18px;
 }
 
+.search-box {
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  min-height: 44px;
+  font-size: 1rem;
+  background-clip: padding-box;
+  border: 1px solid;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
 footer {
   bottom: 0;
@@ -451,6 +472,7 @@ footer {
   letter-spacing: 1.5px;
   text-align: center;
 }
+
 app-footer p {
   color: #ffc18e;
 }
