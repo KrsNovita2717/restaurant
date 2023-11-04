@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import { createFavoriteMovieButtonTemplate, createUnfavoriteMovieButtonTemplate } from '../views/templates/template-creator';
 
 const FavoriteButtonPresenter = {

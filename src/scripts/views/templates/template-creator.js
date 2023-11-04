@@ -4,7 +4,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <h2 class="restaurant__name section__heading" tabindex="0">${restaurant.name}</h2>
     <div class="restaurant__info">
       <div class="restaurant__poster">
-        <img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}">
+        <img width="640" height="360" class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="image__poster">
       </div>
       <div clas="info__body">
         <h3 tabindex="0">Detail Restaurant</h3>
@@ -47,7 +47,7 @@ const createRestaurantItemTemplate = (restaurant) => `
       <div class="item__label">
         <p class="label__text">Kota ${restaurant.city || '-'} <span><i class="fa-solid fa-star"></i> ${restaurant.rating || '-'}</span></p>
       </div>
-      <img data-src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name || '-'}" class="item__image lazyload">
+      <img width="640" height="360" data-src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name || '-'}" class="item__image lazyload">
     </div>
     <div class="item__overview">
       <h3 class="item__name"><a href="/#/detail/${restaurant.id}">${restaurant.name || '-'}</a></h3>

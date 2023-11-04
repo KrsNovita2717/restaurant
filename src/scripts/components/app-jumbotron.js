@@ -8,7 +8,7 @@ class AppJumbotron extends HTMLElement {
       <div class="hero-image">
         <picture>
           <source media="(max-width: 600px)" srcset="./images/hero-image-small.jpg">
-          <img src='./images/hero-image-large.jpg' alt="Tampilan meja yang ada di restoran">
+          <img src="./images/hero-image-large.jpg" alt="Tampilan meja yang ada di restoran">
         </picture>
       </div>
       <div class="inner">

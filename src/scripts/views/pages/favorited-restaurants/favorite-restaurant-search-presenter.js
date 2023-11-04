@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 class FavoriteRestaurantSearchPresenter {
   constructor({ favoriteRestaurants, view }) {
     this._favoriteRestaurants = favoriteRestaurants;

@@ -1,6 +1,6 @@
+/* eslint-disable class-methods-use-this */
 import { createRestaurantItemTemplate } from '../../templates/template-creator';
 
-/* eslint-disable class-methods-use-this */
 class FavoriteRestaurantsView {
   getTemplate() {
     return `

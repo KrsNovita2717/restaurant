@@ -1,9 +1,10 @@
+/* eslint-disable no-new */
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
 const target = path.resolve(__dirname, 'src/public/images');
-const destination = path.resolve(__dirname, 'dist/images');
+const destination = path.resolve(__dirname, 'src/public/sharp');
 
 if (!fs.existsSync(destination)) {
   fs.mkdirSync(destination);
